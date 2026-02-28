@@ -1,2 +1,109 @@
 # Star-Rating
 Customer feedback system with QR tracking and Google review redirect. Supports 1–3 star feedback form and 4–5 star Google review link per customer.
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Feedback</title>
+<style>
+body{font-family:Arial;text-align:center;padding:20px;}
+button{display:block;margin:15px auto;padding:15px;width:90%;font-size:18px;border:none;border-radius:10px;color:white;}
+.bad{background:#dc3545;}
+.good{background:#28a745;}
+form{display:none;}
+input,textarea{width:90%;padding:12px;margin:10px 0;font-size:16px;}
+</style>
+</head>
+<body>
+
+<h2>How was your experience?</h2>
+
+<button class="bad" onclick="openLowStar()">⭐ 1 - 3</button>
+<button class="good" onclick="goToGoogle()">⭐ 4 - 5</button>
+
+<form id="lowStarForm" onsubmit="submitForm(event)">
+    <h3>We value your feedback 🙏</h3>
+    <input type="tel" placeholder="Mobile Number" required>
+    <input type="email" placeholder="Email Address" required>
+    <textarea placeholder="Tell us what went wrong" required></textarea>
+    <button type="submit" style="background:#007bff;">Submit</button>
+</form>
+
+<script>
+/* ===== 50 Customers ===== */
+const customers = {
+"1xk4fsh1":"PASTE_PLACE_ID_1",
+"351xoqj5":"PASTE_PLACE_ID_2",
+"m3bxgivi":"PASTE_PLACE_ID_3",
+"ogq4zivx":"PASTE_PLACE_ID_4",
+"bve1y3s3":"PASTE_PLACE_ID_5",
+"kj5za7d9":"PASTE_PLACE_ID_6",
+"wq2np704":"PASTE_PLACE_ID_7",
+"et2by2rl":"PASTE_PLACE_ID_8",
+"3amono96":"PASTE_PLACE_ID_9",
+"ayiaiyht":"PASTE_PLACE_ID_10",
+"3d4lw03x":"PASTE_PLACE_ID_11",
+"v614avpu":"PASTE_PLACE_ID_12",
+"487t3gbu":"PASTE_PLACE_ID_13",
+"cg9h03d9":"PASTE_PLACE_ID_14",
+"x54tf2qh":"PASTE_PLACE_ID_15",
+"1g2fev92":"PASTE_PLACE_ID_16",
+"oayoypq0":"PASTE_PLACE_ID_17",
+"uwzy5fgs":"PASTE_PLACE_ID_18",
+"5ujfw31f":"PASTE_PLACE_ID_19",
+"ry4xecw0":"PASTE_PLACE_ID_20",
+"n4aebfk0":"PASTE_PLACE_ID_21",
+"q0jyuqg6":"PASTE_PLACE_ID_22",
+"phymdzvq":"PASTE_PLACE_ID_23",
+"a8f85cni":"PASTE_PLACE_ID_24",
+"bfjv5yeb":"PASTE_PLACE_ID_25",
+"edobjr6k":"PASTE_PLACE_ID_26",
+"i7x9jhq6":"PASTE_PLACE_ID_27",
+"v4i9xx79":"PASTE_PLACE_ID_28",
+"i4ubkyva":"PASTE_PLACE_ID_29",
+"tok90oyf":"PASTE_PLACE_ID_30",
+"qbu37d5u":"PASTE_PLACE_ID_31",
+"g6r3jg50":"PASTE_PLACE_ID_32",
+"aw3kih59":"PASTE_PLACE_ID_33",
+"oivpl1g4":"PASTE_PLACE_ID_34",
+"28v3fe18":"PASTE_PLACE_ID_35",
+"e1fqupue":"PASTE_PLACE_ID_36",
+"ngmgyfin":"PASTE_PLACE_ID_37",
+"80195rwe":"PASTE_PLACE_ID_38",
+"cnyvuvzp":"PASTE_PLACE_ID_39",
+"9rgzhkf5":"PASTE_PLACE_ID_40",
+"id2z4c81":"PASTE_PLACE_ID_41",
+"hx04zsa9":"PASTE_PLACE_ID_42",
+"qopnkdp1":"PASTE_PLACE_ID_43",
+"vjwpb07d":"PASTE_PLACE_ID_44",
+"h4h47e96":"PASTE_PLACE_ID_45",
+"15xjvzz1":"PASTE_PLACE_ID_46",
+"qpsxxrs2":"PASTE_PLACE_ID_47",
+"39ksptsl":"PASTE_PLACE_ID_48",
+"w2702f2s":"PASTE_PLACE_ID_49",
+"3qi6wx2p":"PASTE_PLACE_ID_50"
+};
+
+/* ===== Functions ===== */
+function openLowStar(){
+    document.getElementById("lowStarForm").style.display = "block";
+}
+function submitForm(e){
+    e.preventDefault();
+    alert("Thank you for your feedback 🙏");
+    document.getElementById("lowStarForm").reset();
+    document.getElementById("lowStarForm").style.display = "none";
+}
+function goToGoogle(){
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if(customers[id]){
+        window.location.href = "https://search.google.com/local/writereview?placeid=" + customers[id];
+    }else{
+        alert("This QR is not active");
+    }
+}
+</script>
+
+</body>
+</html>
