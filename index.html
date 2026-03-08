@@ -158,23 +158,39 @@ background:#f2f2f2;
 
 const customers={
 
+"1xk4fsh1":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"351xoqj5":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"m3bxgivi":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"ogq4zivx":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"bve1y3s3":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"kj5za7d9":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"wq2np704":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"et2by2rl":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"3amono96":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"ayiaiyht":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"3d4lw03x":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"v614avpu":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"487t3gbu":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"cg9h03d9":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"x54tf2qh":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"1g2fev92":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"oayoypq0":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"uwzy5fgs":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"5ujfw31f":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
+"ry4xecw0":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
 "ngmgyfin":"ChIJTX0GAj0_4jgRwF6x0Ty55EE"
 
 }
 
-/* GET URL PARAMETER */
+/* GET CUSTOMER CODE */
 
 const params=new URLSearchParams(window.location.search)
 const id=params.get("id")
 
-/* GET PLACE ID */
-
 const placeId=customers[id]
 
 if(!placeId){
-
-alert("Invalid QR Code")
-
+alert("QR not active")
 }
 
 /* STAR CLICK */
@@ -201,13 +217,17 @@ document.getElementById("feedbackForm").style.display="none"
 
 }
 
-/* LOW STAR FEEDBACK */
+/* LOW STAR FORM */
 
 function submitFeedback(e){
 
 e.preventDefault()
 
 alert("Thank you for your feedback 🙏")
+
+setTimeout(()=>{
+window.location.href="https://your-landing-page.com"
+},1000)
 
 }
 
