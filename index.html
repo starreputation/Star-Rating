@@ -158,39 +158,23 @@ background:#f2f2f2;
 
 const customers={
 
-"1xk4fsh1":"",
-"351xoqj5":"",
-"m3bxgivi":"",
-"ogq4zivx":"",
-"bve1y3s3":"",
-"kj5za7d9":"",
-"wq2np704":"",
-"et2by2rl":"",
-"3amono96":"",
-"ayiaiyht":"",
-"3d4lw03x":"",
-"v614avpu":"",
-"487t3gbu":"",
-"cg9h03d9":"",
-"x54tf2qh":"",
-"1g2fev92":"",
-"oayoypq0":"",
-"uwzy5fgs":"",
-"5ujfw31f":"",
-"ry4xecw0":"",
-"ngmgyfin":"ChIJTX0GAj0_4jgRwF6x0Ty55EE"
+"shop1":"ChIJTX0GAj0_4jgRwF6x0Ty55EE"
 
 }
 
-/* GET CUSTOMER CODE */
+/* GET URL PARAMETER */
 
 const params=new URLSearchParams(window.location.search)
 const id=params.get("id")
 
-const placeId=[ChIJTX0GAj0_4jgRwF6x0Ty55EE]
+/* GET PLACE ID */
+
+const placeId=customers[id]
 
 if(!placeId){
-alert("QR not active")
+
+alert("Invalid QR Code")
+
 }
 
 /* STAR CLICK */
@@ -217,17 +201,13 @@ document.getElementById("feedbackForm").style.display="none"
 
 }
 
-/* LOW STAR FORM */
+/* LOW STAR FEEDBACK */
 
 function submitFeedback(e){
 
 e.preventDefault()
 
 alert("Thank you for your feedback 🙏")
-
-setTimeout(()=>{
-window.location.href="https://google.com"
-},1000)
 
 }
 
