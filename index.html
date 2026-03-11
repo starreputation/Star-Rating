@@ -10,7 +10,7 @@
 <style>
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial;
 background:#f5f5f5;
 text-align:center;
 padding:20px;
@@ -38,7 +38,7 @@ margin:20px 0;
 }
 
 .stars span{
-font-size:36px;
+font-size:38px;
 cursor:pointer;
 color:#ccc;
 transition:0.3s;
@@ -49,11 +49,70 @@ color:#ffc107;
 transform:scale(1.2);
 }
 
-/* FORM */
+/* REVIEWS */
+
+.goodReviews{
+display:none;
+margin-top:20px;
+}
+
+.reviews-slider{
+max-height:260px;
+overflow-y:auto;
+padding-right:6px;
+}
+
+.review-box{
+
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+cursor:pointer;
+font-weight:bold;
+
+background:linear-gradient(270deg,#ff6a00,#ff2e63,#28a745,#00c6ff);
+background-size:600% 600%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:textGradient 6s ease infinite;
+
+}
+
+.review-box:hover{
+transform:scale(1.05);
+}
+
+@keyframes textGradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* FEEDBACK FORM */
 
 form{
 display:none;
 margin-top:20px;
+padding:22px;
+border-radius:14px;
+
+background:linear-gradient(135deg,#ffecd2,#fcb69f,#ff9a9e,#fad0c4);
+background-size:400% 400%;
+animation:bgMove 8s ease infinite;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+border:2px solid rgba(255,255,255,0.6);
+
+backdrop-filter:blur(6px);
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 input,textarea{
@@ -61,43 +120,39 @@ width:100%;
 padding:12px;
 margin:10px 0;
 border-radius:8px;
-border:1px solid #ccc;
-font-size:15px;
+border:1px solid #ddd;
+font-size:14px;
+background:#ffffffcc;
 }
 
+input:focus,textarea:focus{
+outline:none;
+border-color:#ff6a00;
+box-shadow:0 0 8px rgba(255,106,0,0.4);
+}
 button{
-padding:14px;
 width:100%;
+padding:14px;
 border:none;
 border-radius:8px;
-background:#007bff;
-color:white;
 font-size:16px;
+font-weight:bold;
+color:white;
 cursor:pointer;
+
+background:linear-gradient(270deg,#ff6a00,#ff2e63,#28a745,#00c6ff);
+background-size:600% 600%;
+animation:gradientMove 6s ease infinite;
 }
 
-/* REVIEWS */
-
-.goodReviews{
-display:none;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-margin-top:15px;
-}
-
-.review-box{
-border:1px solid #eee;
-padding:10px;
-font-size:13px;
-border-radius:8px;
-cursor:pointer;
-}
-
-.review-box:hover{
-background:#f2f2f2;
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 </style>
+
 </head>
 
 <body>
@@ -115,46 +170,69 @@ background:#f2f2f2;
 <span onclick="rate(5)">★</span>
 </div>
 
-<!-- LOW STAR FORM -->
+<!-- GOOD REVIEWS -->
+
+<div class="goodReviews" id="goodReviews">
+
+<div class="reviews-slider">
+
+<div class="review-box">Amazing service and very friendly staff</div>
+<div class="review-box">Fantastic experience and great hospitality</div>
+<div class="review-box">Highly recommended place</div>
+<div class="review-box">Great atmosphere and wonderful team</div>
+<div class="review-box">Amazing environment and quick service</div>
+<div class="review-box">One of the best experiences recently</div>
+<div class="review-box">Excellent quality and great support</div>
+<div class="review-box">Wonderful hospitality and beautiful place</div>
+<div class="review-box">Very professional and helpful staff</div>
+<div class="review-box">Amazing place with fantastic service</div>
+
+<div class="review-box">Beautiful place for tourists visiting Kashmir</div>
+<div class="review-box">Perfect place for travelers and families</div>
+<div class="review-box">Great service and welcoming staff</div>
+<div class="review-box">Loved the atmosphere and service</div>
+<div class="review-box">Wonderful experience during our visit</div>
+<div class="review-box">Highly recommended for tourists</div>
+<div class="review-box">Fantastic hospitality and quick service</div>
+<div class="review-box">Very clean and professional place</div>
+<div class="review-box">Amazing ambience and friendly staff</div>
+<div class="review-box">Best experience during our Kashmir trip</div>
+
+<div class="review-box">Perfect place for tourists visiting Srinagar</div>
+<div class="review-box">Loved the Kashmiri hospitality</div>
+<div class="review-box">Great place for travelers and visitors</div>
+<div class="review-box">Amazing experience during our Kashmir tour</div>
+<div class="review-box">Very welcoming staff and quick service</div>
+<div class="review-box">Wonderful place for families and tourists</div>
+<div class="review-box">One of the best tourist experiences in Kashmir</div>
+<div class="review-box">Beautiful place and amazing staff</div>
+<div class="review-box">Excellent place during our Kashmir visit</div>
+<div class="review-box">Great service for tourists and travelers</div>
+
+</div>
+</div>
+
+<!-- FEEDBACK FORM -->
 
 <form id="feedbackForm" onsubmit="submitFeedback(event)">
 
 <h3>We value your feedback 🙏</h3>
 
 <input type="tel" placeholder="Mobile Number" required>
+
 <input type="email" placeholder="Email Address" required>
-<textarea placeholder="Tell us what went wrong" required></textarea>
+
+<textarea placeholder="Tell us what went wrong so we can improve" required></textarea>
 
 <button type="submit">Submit Feedback</button>
 
 </form>
 
-<!-- GOOD REVIEWS -->
-
-<div class="goodReviews" id="goodReviews">
-
-<h3 style="grid-column:1/3;">Tap review → copy → post on Google ⭐⭐⭐⭐⭐</h3>
-
-<div class="review-box">Excellent service</div>
-<div class="review-box">Very professional staff</div>
-<div class="review-box">Great experience</div>
-<div class="review-box">Highly recommended</div>
-<div class="review-box">Amazing support</div>
-<div class="review-box">Quick service</div>
-<div class="review-box">Very satisfied</div>
-<div class="review-box">Best service in town</div>
-<div class="review-box">Fantastic experience</div>
-<div class="review-box">Super helpful staff</div>
-<div class="review-box">Very reliable</div>
-<div class="review-box">Quality service</div>
-
-</div>
-
 </div>
 
 <script>
 
-/* CUSTOMER ACTIVATION CODES */
+/* CUSTOMER ACTIVATION */
 
 const customers={
 
@@ -173,7 +251,7 @@ const customers={
 "487t3gbu":"this qr is not active now",
 "cg9h03d9":"this qr is not active now",
 "x54tf2qh":"this qr is not active now",
-"1g2fev92":"this qr is not active now",
+"1g2fev92":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
 "oayoypq0":"this qr is not active now",
 "uwzy5fgs":"this qr is not active now",
 "5ujfw31f":"this qr is not active now",
@@ -194,6 +272,7 @@ const customers={
 "oivpl1g4":"this qr is not active now",
 "28v3fe18":"this qr is not active now",
 "e1fqupue":"this qr is not active now",
+"ngmgyfin":"this qr is not active now",
 "80195rwe":"this qr is not active now",
 "cnyvuvzp":"this qr is not active now",
 "9rgzhkf5":"this qr is not active now",
@@ -206,20 +285,13 @@ const customers={
 "qpsxxrs2":"this qr is not active now",
 "39ksptsl":"this qr is not active now",
 "w2702f2s":"this qr is not active now",
-"3qi6wx2p":"this qr is not active now",
-"ngmgyfin":"ChIJTX0GAj0_4jgRwF6x0Ty55EE"
-}
+"3qi6wx2p":"this qr is not active now"
 
-/* GET CUSTOMER CODE */
+}
 
 const params=new URLSearchParams(window.location.search)
 const id=params.get("id")
-
 const placeId=customers[id]
-
-if(!placeId){
-alert("QR not active")
-}
 
 /* STAR CLICK */
 
@@ -238,24 +310,44 @@ document.getElementById("goodReviews").style.display="none"
 
 if(star>=4){
 
-document.getElementById("goodReviews").style.display="grid"
+document.getElementById("goodReviews").style.display="block"
 document.getElementById("feedbackForm").style.display="none"
 
 }
 
 }
 
-/* LOW STAR FORM */
+/* LOW STAR */
 
 function submitFeedback(e){
 
 e.preventDefault()
 
-alert("Thank you for your feedback 🙏")
+document.body.innerHTML=`
+
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
+text-align:center;
+">
+
+<div>
+
+<h2>Thank You ❤️</h2>
+<p>Thanks for your feedback</p>
+
+</div>
+
+</div>
+
+`
 
 setTimeout(()=>{
-window.location.href="https://your-landing-page.com"
-},1000)
+window.close()
+},100)
 
 }
 
