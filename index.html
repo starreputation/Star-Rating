@@ -105,7 +105,6 @@ animation:bgMove 8s ease infinite;
 
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 border:2px solid rgba(255,255,255,0.6);
-
 backdrop-filter:blur(6px);
 }
 
@@ -125,11 +124,6 @@ font-size:14px;
 background:#ffffffcc;
 }
 
-input:focus,textarea:focus{
-outline:none;
-border-color:#ff6a00;
-box-shadow:0 0 8px rgba(255,106,0,0.4);
-}
 button{
 width:100%;
 padding:14px;
@@ -170,8 +164,6 @@ animation:gradientMove 6s ease infinite;
 <span onclick="rate(5)">★</span>
 </div>
 
-<!-- GOOD REVIEWS -->
-
 <div class="goodReviews" id="goodReviews">
 
 <div class="reviews-slider">
@@ -181,38 +173,14 @@ animation:gradientMove 6s ease infinite;
 <div class="review-box">Highly recommended place</div>
 <div class="review-box">Great atmosphere and wonderful team</div>
 <div class="review-box">Amazing environment and quick service</div>
-<div class="review-box">One of the best experiences recently</div>
 <div class="review-box">Excellent quality and great support</div>
 <div class="review-box">Wonderful hospitality and beautiful place</div>
 <div class="review-box">Very professional and helpful staff</div>
 <div class="review-box">Amazing place with fantastic service</div>
-
-<div class="review-box">Beautiful place for tourists visiting Kashmir</div>
-<div class="review-box">Perfect place for travelers and families</div>
-<div class="review-box">Great service and welcoming staff</div>
-<div class="review-box">Loved the atmosphere and service</div>
-<div class="review-box">Wonderful experience during our visit</div>
-<div class="review-box">Highly recommended for tourists</div>
-<div class="review-box">Fantastic hospitality and quick service</div>
-<div class="review-box">Very clean and professional place</div>
-<div class="review-box">Amazing ambience and friendly staff</div>
 <div class="review-box">Best experience during our Kashmir trip</div>
 
-<div class="review-box">Perfect place for tourists visiting Srinagar</div>
-<div class="review-box">Loved the Kashmiri hospitality</div>
-<div class="review-box">Great place for travelers and visitors</div>
-<div class="review-box">Amazing experience during our Kashmir tour</div>
-<div class="review-box">Very welcoming staff and quick service</div>
-<div class="review-box">Wonderful place for families and tourists</div>
-<div class="review-box">One of the best tourist experiences in Kashmir</div>
-<div class="review-box">Beautiful place and amazing staff</div>
-<div class="review-box">Excellent place during our Kashmir visit</div>
-<div class="review-box">Great service for tourists and travelers</div>
-
 </div>
 </div>
-
-<!-- FEEDBACK FORM -->
 
 <form id="feedbackForm" onsubmit="submitFeedback(event)">
 
@@ -232,66 +200,27 @@ animation:gradientMove 6s ease infinite;
 
 <script>
 
-/* CUSTOMER ACTIVATION */
+/* CUSTOMER DATABASE */
 
 const customers={
 
-"1xk4fsh1":"this qr is not active now",
-"351xoqj5":"this qr is not active now",
-"m3bxgivi":"this qr is not active now",
-"ogq4zivx":"this qr is not active now",
-"bve1y3s3":"this qr is not active now",
-"kj5za7d9":"this qr is not active now",
-"wq2np704":"this qr is not active now",
-"et2by2rl":"this qr is not active now",
-"3amono96":"this qr is not active now",
-"ayiaiyht":"this qr is not active now",
-"3d4lw03x":"this qr is not active now",
-"v614avpu":"this qr is not active now",
-"487t3gbu":"this qr is not active now",
-"cg9h03d9":"this qr is not active now",
-"x54tf2qh":"this qr is not active now",
-"1g2fev92":"this qr is not active now",
-"oayoypq0":"this qr is not active now",
-"uwzy5fgs":"this qr is not active now",
-"5ujfw31f":"this qr is not active now",
-"ry4xecw0":"this qr is not active now",
-"n4aebfk0":"this qr is not active now",
-"q0jyuqg6":"this qr is not active now",
-"phymdzvq":"this qr is not active now",
-"a8f85cni":"this qr is not active now",
-"bfjv5yeb":"this qr is not active now",
-"edobjr6k":"this qr is not active now",
-"i7x9jhq6":"this qr is not active now",
-"v4i9xx79":"this qr is not active now",
-"i4ubkyva":"this qr is not active now",
-"tok90oyf":"this qr is not active now",
-"qbu37d5u":"this qr is not active now",
-"g6r3jg50":"this qr is not active now",
-"aw3kih59":"this qr is not active now",
-"oivpl1g4":"this qr is not active now",
-"28v3fe18":"this qr is not active now",
-"e1fqupue":"this qr is not active now",
-"ngmgyfin":"ChIJTX0GAj0_4jgRwF6x0Ty55EE",
-"80195rwe":"this qr is not active now",
-"cnyvuvzp":"this qr is not active now",
-"9rgzhkf5":"this qr is not active now",
-"id2z4c81":"this qr is not active now",
-"hx04zsa9":"this qr is not active now",
-"qopnkdp1":"this qr is not active now",
-"vjwpb07d":"this qr is not active now",
-"h4h47e96":"this qr is not active now",
-"15xjvzz1":"this qr is not active now",
-"qpsxxrs2":"this qr is not active now",
-"39ksptsl":"this qr is not active now",
-"w2702f2s":"this qr is not active now",
-"3qi6wx2p":"this qr is not active now"
+"ngmgyfin":"ChIJTX0GAj0_4jgRwF6x0Ty55EE"
 
 }
+
+/* GET QR ID */
 
 const params=new URLSearchParams(window.location.search)
 const id=params.get("id")
 const placeId=customers[id]
+
+/* INVALID QR */
+
+if(!placeId){
+
+alert("This QR is not active")
+
+}
 
 /* STAR CLICK */
 
@@ -317,7 +246,7 @@ document.getElementById("feedbackForm").style.display="none"
 
 }
 
-/* LOW STAR */
+/* LOW STAR FEEDBACK */
 
 function submitFeedback(e){
 
@@ -325,14 +254,7 @@ e.preventDefault()
 
 document.body.innerHTML=`
 
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-family:Arial;
-text-align:center;
-">
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;text-align:center;">
 
 <div>
 
@@ -351,13 +273,41 @@ window.close()
 
 }
 
+/* COPY FUNCTION */
+
+function copyText(text){
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(text)
+
+}else{
+
+const textarea=document.createElement("textarea")
+textarea.value=text
+document.body.appendChild(textarea)
+textarea.select()
+document.execCommand("copy")
+document.body.removeChild(textarea)
+
+}
+
+}
+
 /* REVIEW CLICK */
 
 document.querySelectorAll(".review-box").forEach(box=>{
 
 box.onclick=function(){
 
-navigator.clipboard.writeText(this.innerText)
+if(!placeId){
+
+alert("QR not active")
+return
+
+}
+
+copyText(this.innerText)
 
 window.location.href="https://search.google.com/local/writereview?placeid="+placeId
 
